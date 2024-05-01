@@ -28,8 +28,8 @@ export const userSchema = new Schema({
     default: Date.now,
   },
   deleted_at: {
-    type: Date,
-    default: 0,
+    type: Date || null,
+    default: null,
   },
 });
 
