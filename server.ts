@@ -1,21 +1,13 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
-
-require("dotenv").config();
+import "dotenv/config";
+import start from "./startup/start";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-if (!process.env.MONGO_URI) {
-  throw new Error("MONGO_URI is not defined");
-}
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((error) => console.error(error));
+start(app);
 
 app.get("/", (req, res) => {
   res.send({"message": "Hello world!"});
