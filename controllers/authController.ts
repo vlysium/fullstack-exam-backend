@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 // reusable function to handle errors
-function handleErrors(error: any, res: any): void {
+function handleErrors(error, res): void {
   if (error.code === 11000) { // email already exists
     return res.status(400).json({ message: "Email already exists" });
   }
@@ -18,7 +18,7 @@ function handleErrors(error: any, res: any): void {
 }
 
 // signup controller
-const signup = async (req: any, res: any) => {
+const signup = async (req, res) => {
   try {
     const { name, email, password }: IUser = req.body;
 
@@ -62,12 +62,12 @@ const signup = async (req: any, res: any) => {
       } as IUser,
     });
 
-  } catch (error: any) {
+  } catch (error) {
     handleErrors(error, res);
   }
 };
 
-const login = async (req: any, res: any) => {
+const login = async (req, res) => {
   try {
     const { email, password }: IUser = req.body;
 
@@ -114,32 +114,32 @@ const login = async (req: any, res: any) => {
       } as IUser,
     });
 
-  } catch (error: any) {
+  } catch (error) {
     handleErrors(error, res);
   }
 }
 
-const getUser = async (req: any, res: any) => {
+const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
     if (!user) {
       throw new Error("User not found");
     }
     res.status(200).json(user);
-  } catch (error: any) {
+  } catch (error) {
     handleErrors(error, res);
   }
 }
 
 // soft delete a user in the database
-const deleteUser = async (req: any, res: any) => {
+const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, { is_deleted: !req.user.is_deleted }); // allows admins to ban/unban a user
     if (!user) {
       throw new Error("User not found");
     }
     res.status(200).json({ message: "User deleted successfully" }); // should be 204 but a message is better
-  } catch (error: any) {
+  } catch (error) {
     handleErrors(error, res);
   }
 }

@@ -1,7 +1,7 @@
 import "dotenv/config";
 import jwt from "jsonwebtoken";
 
-export const jwtAuth = (req: any, res: any, next: any) => {
+export const jwtAuth = (req, res, next) => {
   try {
     const token = req.header("x-auth-token");
   
@@ -20,7 +20,7 @@ export const jwtAuth = (req: any, res: any, next: any) => {
   }
 }
 
-export const adminAuth = (req: any, res: any, next: any) => {
+export const adminAuth = (req, res, next) => {
   try {
     // check if the user is an admin
     if (req.user.role !== "admin") {

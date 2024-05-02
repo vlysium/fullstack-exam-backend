@@ -10,7 +10,7 @@ export const productSchema = new Schema({
   slug: {
     type: String,
     unique: true,
-    default: function () {
+    default: function (this: { name: string }) {
       return this.name.toLowerCase().split(" ").join("-");
     }
   },
