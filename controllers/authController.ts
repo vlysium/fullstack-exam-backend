@@ -111,4 +111,16 @@ const login = async (req: any, res: any) => {
   }
 }
 
-export default { signup, login };
+const getUser = async (req: any, res: any) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      throw new Error("User not found");
+    }
+    res.status(200).json(user);
+  } catch (error: any) {
+    handleErrors(error, res);
+  }
+}
+
+export default { signup, login, getUser };
