@@ -27,7 +27,10 @@ export const productSchema = new Schema({
     type: String,
     required: [true, "Please enter a product image"],
   },
-  categories: [categorySchema]
+  categories: {
+    type: [{ ref: "Category", type: Schema.Types.ObjectId }], // referencing the id to use populate()
+    required: [true, "Please enter product categories"],
+  }
 });
 
 export interface IProduct extends Document {
@@ -37,7 +40,7 @@ export interface IProduct extends Document {
   description: string;
   price: number;
   image: string;
-  categories: ICategory[];
+  categories: ICategory["_id"][];
 }
 
 export default mongoose.model<IProduct>("Product", productSchema);
