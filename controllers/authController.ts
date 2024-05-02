@@ -64,4 +64,51 @@ const signup = async (req: any, res: any) => {
   }
 };
 
-export default { signup };
+const login = async (req: any, res: any) => {
+  try {
+    const { email, password }: IUser = req.body;
+
+    // validate the user input
+    if (!email || !password) {
+      throw new Error("Please enter all fields");
+    }
+
+    // find the user
+    const user = await User.findOne({ email });
+
+    // check if the user exists
+    if (!user) {
+      throw new Error("Invalid credentials");
+    }
+
+    // compare the password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new Error("Invalid credentials");
+    }
+
+    // create a jwt token
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET as string,
+      { expiresIn: 3600 }
+    );
+
+    // send the response to the client
+    res.status(200).json({
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        balance: user.balance,
+      } as IUser,
+    });
+
+  } catch (error: any) {
+    handleErrors(error, res);
+  }
+}
+
+export default { signup, login };
