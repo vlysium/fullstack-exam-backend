@@ -19,6 +19,11 @@ export const userSchema = new Schema({
     required: [true, "Please enter a password"],
     minlength: [8, "Minimum password length is 8 characters"],
   },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
   balance: {
     type: Number,
     default: 0,
@@ -38,6 +43,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  role: "user" | "admin";
   balance: number;
   created_at: Date;
   deleted_at: Date;

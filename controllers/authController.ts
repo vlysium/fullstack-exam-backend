@@ -42,7 +42,7 @@ const signup = async (req: any, res: any) => {
 
     // create a jwt token
     const token = jwt.sign(
-      { id: user._id },
+      { id: user._id, role: user.role},
       process.env.JWT_SECRET as string,
       { expiresIn: 3600 }
     );
@@ -54,6 +54,7 @@ const signup = async (req: any, res: any) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        role: user.role,
         balance: user.balance,
       } as IUser,
     });
