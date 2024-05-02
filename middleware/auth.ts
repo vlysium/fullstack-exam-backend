@@ -1,7 +1,7 @@
 import "dotenv/config";
 import jwt from "jsonwebtoken";
 
-const jwtAuth = (req: any, res: any, next: any) => {
+export const jwtAuth = (req: any, res: any, next: any) => {
   try {
     const token = req.header("x-auth-token");
   
@@ -9,7 +9,7 @@ const jwtAuth = (req: any, res: any, next: any) => {
     if (!token) {
       return res.status(401).json({ message: "No token, authorization denied" });
     }
-    
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
     req.user = decoded;
 
@@ -20,4 +20,16 @@ const jwtAuth = (req: any, res: any, next: any) => {
   }
 }
 
-export default jwtAuth;
+export const adminAuth = (req: any, res: any, next: any) => {
+  try {
+    // check if the user is an admin
+    if (req.user.role !== "admin") {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+
+    // move to the next middleware
+    next();
+  } catch (error) {
+    res.status(400).json({ message: "Invalid token" });
+  }
+}

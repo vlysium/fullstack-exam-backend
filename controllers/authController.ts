@@ -5,8 +5,11 @@ import "dotenv/config";
 
 // reusable function to handle errors
 function handleErrors(error: any, res: any): void {
-  if (error.code === 11000) {
+  if (error.code === 11000) { // email already exists
     return res.status(400).json({ message: "Email already exists" });
+  }
+  if (error.name === "CastError") { // invalid mongodb _id
+    return res.status(400).json({ message: "Invalid user ID" });
   }
   if (error.message) {
     return res.status(400).json({ message: error.message });
@@ -81,6 +84,11 @@ const login = async (req: any, res: any) => {
       throw new Error("Invalid credentials");
     }
 
+    // check if the user is banned
+    if (user.is_deleted) {
+      throw new Error("Your account is banned from the platform");
+    }
+
     // compare the password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -123,4 +131,17 @@ const getUser = async (req: any, res: any) => {
   }
 }
 
-export default { signup, login, getUser };
+// soft delete a user in the database
+const deleteUser = async (req: any, res: any) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, { is_deleted: !req.user.is_deleted }); // allows admins to ban/unban a user
+    if (!user) {
+      throw new Error("User not found");
+    }
+    res.status(200).json({ message: "User deleted successfully" }); // should be 204 but a message is better
+  } catch (error: any) {
+    handleErrors(error, res);
+  }
+}
+
+export default { signup, login, getUser, deleteUser };
