@@ -126,6 +126,7 @@ const getUser = async (req, res) => {
       throw new Error("User not found");
     }
     res.status(200).json(user);
+    
   } catch (error) {
     handleErrors(error, res);
   }
@@ -139,6 +140,7 @@ const deleteUser = async (req, res) => {
       throw new Error("User not found");
     }
     res.status(200).json({ message: "User deleted successfully" }); // should be 204 but a message is better
+
   } catch (error) {
     handleErrors(error, res);
   }
