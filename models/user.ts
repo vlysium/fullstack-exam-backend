@@ -28,13 +28,13 @@ export const userSchema = new Schema({
     type: Number,
     default: 0,
   },
+  is_deleted: {
+    type: Boolean,
+    default: false,
+  },
   created_at: {
     type: Date,
     default: Date.now,
-  },
-  deleted_at: {
-    type: Date || null,
-    default: null,
   },
 });
 
@@ -45,8 +45,8 @@ export interface IUser extends Document {
   password: string;
   role: "user" | "admin";
   balance: number;
+  is_deleted: boolean;
   created_at: Date;
-  deleted_at: Date;
 }
 
 export default mongoose.model<IUser>("User", userSchema);
