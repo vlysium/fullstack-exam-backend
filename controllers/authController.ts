@@ -1,4 +1,4 @@
-import User, { IUser } from "../models/User";
+import User, { IUser } from "../models/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import "dotenv/config";

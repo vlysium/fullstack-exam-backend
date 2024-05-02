@@ -1,4 +1,3 @@
-import exp from "constants";
 import mongoose, { Schema, Document } from "mongoose";
 
 export const categorySchema = new Schema({
