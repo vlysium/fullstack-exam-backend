@@ -13,14 +13,10 @@ export const categorySchema = new Schema({
       return this.name.toLowerCase().split(" ").join("-");
     }
   },
-  description: {
-    type: String,
-    required: [true, "Please enter a category description"],
-    trim: true,
-  },
   type: {
     type: String,
-    enum: ["cuisine", "ingredients", "course"],
+    enum: ["cuisine", "course"],
+    required: [true, "Please enter a category type"],
   },
 });
 
@@ -28,8 +24,7 @@ export interface ICategory extends Document {
   _id: string;
   name: string;
   slug: string;
-  description: string;
-  type: "cuisine" | "ingredients" | "course";
+  type: "cuisine" | "course";
 }
 
 // specify the collection name as "categories" instead due to the plural form of the model name

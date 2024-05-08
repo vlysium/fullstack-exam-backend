@@ -6,7 +6,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "nodemon --exec ts-node server.ts"
+    "dev": "nodemon --exec ts-node server.ts",
+    "seed": "ts-node ./data/seeder.ts"
   },
   "author": "Shubham",
   "license": "ISC",
