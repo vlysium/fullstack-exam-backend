@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// serve static files
+app.use(express.static("public"));
+app.use("/images", express.static(__dirname + "/images"));
+
 start(app);
 
 app.get("/", (req, res) => {

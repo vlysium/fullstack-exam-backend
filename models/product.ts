@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { ICategory, categorySchema } from "./category";
 
 export const productSchema = new Schema({
   name: {
@@ -24,23 +23,40 @@ export const productSchema = new Schema({
     required: [true, "Please enter a product price"],
   },
   image: {
+    type: Object,
     url: {
       type: String,
-      required: true,
+      required: [true, "Please enter a product image"],
     },
     alt: {
       type: String,
     },
-    required: [true, "Please enter a product image"],
   },
   categories: {
-    type: [{ ref: "Category", type: Schema.Types.ObjectId }], // referencing the id to use populate()
-    required: [true, "Please enter product categories"],
+    type: [
+      {
+        _id: {
+          type: String,
+          default: function (this: { name: string }) {
+            return this.name.toLowerCase().split(" ").join("-");
+          }
+        },
+        name: {
+          type: String,
+          required: [true, "Please enter product category name"]
+        },
+        type: {
+          type: String,
+          required: [true, "Please enter product category type"]
+        }
+      }
+    ],
+    required: [true, "Please enter product categories"]
   }
 });
 
 export interface IProduct extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId | string;
   name: string;
   slug: string;
   description: string;
@@ -49,7 +65,11 @@ export interface IProduct extends Document {
     url: string;
     alt: string;
   };
-  categories: ICategory["_id"][];
+  categories: {
+    _id: string;
+    name: string;
+    type: string;
+  }[];
 }
 
 export default mongoose.model<IProduct>("Product", productSchema);

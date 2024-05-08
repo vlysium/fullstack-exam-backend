@@ -20,9 +20,9 @@ const getProducts = async (req, res) => {
   }
 }
 
-const getProductById = async (req, res) => {
+const getProductBySlug = async (req, res) => {
   try {
-    const product: IProduct | null = await Product.findById(req.params.id);
+    const product: IProduct | null = await Product.findOne({ slug: req.params.slug });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -35,4 +35,4 @@ const getProductById = async (req, res) => {
   }
 }
 
-export default { getProducts, getProductById };
+export default { getProducts, getProductBySlug };

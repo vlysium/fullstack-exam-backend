@@ -30,7 +30,7 @@ interface IProductQuantity extends IProduct {
 }
 
 export interface IOrder extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId | string;
   user_id: string;
   items: IProductQuantity[];
   total: number;

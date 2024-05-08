@@ -39,7 +39,7 @@ export const userSchema = new Schema({
 });
 
 export interface IUser extends Document {
-  _id: string;
+  _id: mongoose.Types.ObjectId | string;
   name: string;
   email: string;
   password: string;
