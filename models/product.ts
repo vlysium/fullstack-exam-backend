@@ -24,7 +24,13 @@ export const productSchema = new Schema({
     required: [true, "Please enter a product price"],
   },
   image: {
-    type: String,
+    url: {
+      type: String,
+      required: true,
+    },
+    alt: {
+      type: String,
+    },
     required: [true, "Please enter a product image"],
   },
   categories: {
@@ -39,7 +45,10 @@ export interface IProduct extends Document {
   slug: string;
   description: string;
   price: number;
-  image: string;
+  image: { 
+    url: string;
+    alt: string;
+  };
   categories: ICategory["_id"][];
 }
 
