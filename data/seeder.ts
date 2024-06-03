@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import "dotenv/config";
-import categories from "./categories";
 import products from "./products";
-import Category from "../models/category";
 import Product from "../models/product";
 
 // connect to MongoDB
@@ -18,7 +16,7 @@ const seed = async () => {
     console.log("Truncated collections");
 
     // seed products
-    console.log("🌱Seeding products")
+    console.log("Seeding products")
     for (const product of products) {
       const newProduct = await new Product(product).save();
       console.log(`Product created: ${newProduct.name}`);

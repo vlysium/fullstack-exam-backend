@@ -8,6 +8,8 @@ export default [
       "src": "/images/smash-burger.webp",
       "alt": "Burger with lettuce, pickles, melted cheese, and sauce"
     },
-    "categories": [{"name": "American", "type": "cuisine"}]
+    "category": {
+      "cuisine": ["American"]
+    }
   }
 ]

@@ -32,26 +32,14 @@ export const productSchema = new Schema({
       type: String,
     },
   },
-  categories: {
-    type: [
-      {
-        _id: {
-          type: String,
-          default: function (this: { name: string }) {
-            return this.name.toLowerCase().split(" ").join("-");
-          }
-        },
-        name: {
-          type: String,
-          required: [true, "Please enter product category name"]
-        },
-        type: {
-          type: String,
-          required: [true, "Please enter product category type"]
-        }
-      }
-    ],
-    required: [true, "Please enter product categories"]
+  category: {
+    type: Object,
+    cuisine: {
+      type: [String],
+    },
+    menu: {
+      type: [String],
+    }
   }
 });
 
@@ -65,11 +53,10 @@ export interface IProduct extends Document {
     url: string;
     alt: string;
   };
-  categories: {
-    _id: string;
-    name: string;
-    type: string;
-  }[];
+  category: {
+    cuisine: string[];
+    menu: string[];
+  };
 }
 
 export default mongoose.model<IProduct>("Product", productSchema);
