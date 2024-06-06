@@ -11,15 +11,19 @@ const categories = {
     "French",
     "German",
     "Scaninavian",
-    "Middle Eastern"
+    "Middle Eastern",
+    "British"
   ],
   menu: [
     "Soups",
     "Salads",
     "Noodles",
     "Pasta",
-    "Grains",
+    "Wheat",
+    "Rice",
     "Meat",
+    "Fried",
+    "Grilled",
     "Seafood",
     "Desserts",
     "Beverages",
