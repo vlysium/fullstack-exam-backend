@@ -8,8 +8,8 @@ export default [
       "alt": "Burger with lettuce, pickles, melted cheese, and sauce"
     },
     "category": {
-      "cuisine": ["American"],
-      "menu": ["Meat", "Wheat"]
+      "cuisine": ["North American"],
+      "menu": ["Meat", "Bread"]
     }
   },
   {
@@ -21,7 +21,7 @@ export default [
       "alt": "Full English breakfast with bacon, sausage, eggs, beans, tomato, and toast on a plate"
     },
     "category": {
-      "cuisine": ["British"],
+      "cuisine": ["British & Irish"],
       "menu": ["Meat", "Wheat", "Grilled"]
     }
   },
@@ -34,7 +34,7 @@ export default [
       "alt": "Fish and chips with battered cod and fries on a plate"
     },
     "category": {
-      "cuisine": ["British"],
+      "cuisine": ["British & Irish"],
       "menu": ["Seafood", "Snacks", "Fried"]
     }
   },
@@ -47,7 +47,7 @@ export default [
       "alt": "Fried onion rings in a newspaper bowl"
     },
     "category": {
-      "cuisine": ["American", "British"],
+      "cuisine": ["North American", "British & Irish"],
       "menu": ["Snacks", "Fried"]
     }
   },
@@ -60,8 +60,8 @@ export default [
       "alt": "Grilled sausage in a bun with jalapenos, relish, and sauce"
     },
     "category": {
-      "cuisine": ["American", "German"],
-      "menu": ["Meat", "Wheat", "Grilled"]
+      "cuisine": ["North American", "Eastern European"],
+      "menu": ["Meat", "Bread", "Grilled"]
     }
   },
   {
@@ -73,7 +73,7 @@ export default [
       "alt": "Coca Cola bottle with condensation and bubbles in ice"
     },
     "category": {
-      "cuisine": ["American"],
+      "cuisine": ["North American"],
       "menu": ["Beverages"]
     }
   },
@@ -86,7 +86,7 @@ export default [
       "alt": "Oreo milkshake with whipped cream and Oreo crumbles"
     },
     "category": {
-      "cuisine": ["American"],
+      "cuisine": ["North American"],
       "menu": ["Desserts", "Beverages"]
     }
   },
@@ -99,7 +99,7 @@ export default [
       "alt": "Pasta fusilli salad with tomatoes and olives"
     },
     "category": {
-      "cuisine": ["Italian"],
+      "cuisine": ["Mediterranean"],
       "menu": ["Salads", "Pasta"]
     }
   },
@@ -112,7 +112,7 @@ export default [
       "alt": "Spaghetti carbonara with pancetta and Parmesan cheese"
     },
     "category": {
-      "cuisine": ["Italian"],
+      "cuisine": ["Mediterranean"],
       "menu": ["Pasta", "Meat"]
     }
   },
