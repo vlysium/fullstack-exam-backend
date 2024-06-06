@@ -29,10 +29,12 @@ export const productSchema = new Schema({
     max: [5, "Maximum rating is 5"],
   },
   image: {
-    type: Object,
     src: {
       type: String,
-      required: [true, "Please enter a product image"],
+      unique: true,
+      default: function (this: { name: string }) {
+        return `/images/${this.name.toLowerCase().split(" ").join("-")}.webp`;
+      }
     },
     alt: {
       type: String,
