@@ -22,9 +22,15 @@ export const productSchema = new Schema({
     type: Number,
     required: [true, "Please enter a product price"],
   },
+  rating: {
+    type: Number,
+    default: 3,
+    min: [0, "Minimum rating is 0"],
+    max: [5, "Maximum rating is 5"],
+  },
   image: {
     type: Object,
-    url: {
+    src: {
       type: String,
       required: [true, "Please enter a product image"],
     },
@@ -49,8 +55,9 @@ export interface IProduct extends Document {
   slug: string;
   description: string;
   price: number;
+  rating: number;
   image: { 
-    url: string;
+    src: string;
     alt: string;
   };
   category: {
