@@ -2,10 +2,12 @@ import Product, { IProduct } from "../models/product";
 
 interface Response {
   count: number;
+  totalCount: number;
   items: IProduct[];
   previous?: Pagination;
   next?: Pagination;
   page: number;
+  totalPages: number;
 }
 
 interface Pagination {
@@ -49,14 +51,19 @@ const getProducts = async (req, res) => {
   }
 
   try {
-    const products: IProduct[] = await Product.find(query).limit(limit).skip(startIndex).exec();
+    const totalItems = await Product.countDocuments(query).exec(); // total number of items in the collection
+    const products: IProduct[] = await Product.find(query).limit(limit).skip(startIndex).exec(); // products for the current page
+
+    const totalPages = Math.ceil(totalItems / limit);
 
     const response: Response = {
       count: products.length,
+      totalCount: totalItems,
       items: [...products],
       previous: previous,
       next: next,
       page: page,
+      totalPages: totalPages,
     };
     res.status(200).json(response);
 
