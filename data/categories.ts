@@ -6,7 +6,7 @@ const categories = {
     "Eastern European", // germany, poland, hungary, russia
     "Middle Eastern & Turkish", // turkey, middle eastern countries
     "East Asian", // china, japan, south Korea
-    "South Asian & Southeast Asian", // india, thailand
+    "South Asian", // india, thailand
     "North American", // usa, canada
     "Latin American", // mexico, south american countries
   ],

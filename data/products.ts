@@ -116,6 +116,84 @@ export default [
       "menu": ["Pasta", "Meat"]
     }
   },
+  {
+    "name": "Swedish Meatballs",
+    "description": "Indulge in the iconic taste of Swedish meatballs, reminiscent of cozy trips down Ikea's aisles. Succulent spheres of seasoned meat, lovingly crafted and bathed in a creamy gravy. A flavorful journey awaits, echoing the warmth of home and the thrill of discovery.",
+    "price": 39.95,
+    "rating": 4.6,
+    "image": {
+      "alt": "Swedish meatballs in a creamy gravy sauce with a side of mashed potatoes"
+    },
+    "category": {
+      "cuisine": ["Scandinavian"],
+      "menu": ["Meat"]
+    }
+  },
+  {
+    "name": "Nordisk Skive",
+    "description": "Experience the taste of the Nordisk Skive, a traditional Scandinavian open-faced sandwich that's as beautiful as it is delicious. Fresh tomatoes, delicate shrimp, and creamy egg slices atop dense rye bread, a symphony of flavors in every bite, a work of art for your taste buds.",
+    "price": 23.95,
+    "rating": 3.8,
+    "image": {
+      "alt": "Open-faced sandwich with shrimp, egg, and tomato on rye bread"
+    },
+    "category": {
+      "cuisine": ["Scandinavian"],
+      "menu": ["Bread", "Seafood"]
+    }
+  },
+  {
+    "name": "Sushi Maki",
+    "description": "Delight in the delicate flavors of our Sushi Maki, a classic Japanese roll filled with fresh fish, crisp vegetables, and seasoned rice, all wrapped in a sheet of nori. A bite-sized taste of Japan that's as beautiful as it is delicious.",
+    "price": 49.95,
+    "rating": 4.2,
+    "image": {
+      "alt": "Sushi maki roll with fish, avocado, cucumber and fish roe"
+    },
+    "category": {
+      "cuisine": ["East Asian"],
+      "menu": ["Seafood", "Rice"]
+    }
+  },
+  {
+    "name": "Egg Fried Rice",
+    "description": "Savor the comforting flavors of our Egg Fried Rice, a classic Chinese dish featuring fluffy rice, tender vegetables, and scrambled eggs, all stir-fried to perfection. A simple yet satisfying option for any meal.",
+    "price": 26.95,
+    "rating": 3.9,
+    "image": {
+      "alt": "Fried rice with egg, green onions and vegetables in a bowl"
+    },
+    "category": {
+      "cuisine": ["East Asian", "South Asian"],
+      "menu": ["Rice", "Fried"]
+    }
+  },
+  {
+    "name": "Chicken Tikka Masala",
+    "description": "Embark on a culinary journey with Chicken Tikka Masala, a beloved British national dish infused with vibrant Indian flavors. Tender chicken marinated in spices, simmered in a rich tomato-based sauce, served with fluffy rice. Truly a cultural fusion that tantalizes taste buds and celebrates culinary diversity.",
+    "price": 42.95,
+    "rating": 4.5,
+    "image": {
+      "alt": "Chicken tikka masala with rice and naan"
+    },
+    "category": {
+      "cuisine": ["British & Irish", "South Asian"],
+      "menu": ["Meat", "Rice", "Bread"]
+    }
+  },
+  {
+    "name": "Bibimbap",
+    "description": "Experience the vibrant flavors of Bibimbap, a Korean rice bowl brimming with colorful vegetables, a fried egg, and spicy gochujang sauce. A harmonious blend of textures and tastes whose beauty is only matched by its deliciousness.",
+    "price": 26.95,
+    "rating": 4.3,
+    "image": {
+      "alt": "Bibimbap rice bowl with vegetables, egg, and vegetables"
+    },
+    "category": {
+      "cuisine": ["East Asian"],
+      "menu": ["Rice", "Meat", "Salads"]
+    }
+  },
 ]
 
 /*
