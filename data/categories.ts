@@ -4,7 +4,7 @@ const categories = {
     "British & Irish", // britain, ireland
     "Mediterranean", // france, spain, italy, greece
     "Eastern European", // germany, poland, hungary, russia
-    "Middle Eastern & Turkish", // turkey, middle eastern countries
+    "Ottoman", // turkey, middle eastern countries
     "East Asian", // china, japan, south Korea
     "South Asian", // india, thailand
     "North American", // usa, canada

@@ -104,7 +104,7 @@ export default [
     }
   },
   {
-    "name": "Carbonara",
+    "name": "Spaghetti Carbonara",
     "description": "Rich and creamy Carbonara, a classic Italian pasta dish featuring al dente spaghetti, crispy pancetta, creamy egg sauce, and a generous sprinkle of Parmesan cheese. Indulge in the decadent flavors of Italy with every bite.",
     "price": 33.95,
     "rating": 4.5,
