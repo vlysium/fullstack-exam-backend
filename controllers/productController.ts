@@ -23,6 +23,15 @@ const getProducts = async (req, res) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
+  // filters
+  const query = {};
+  if (req.query.cuisine) {
+    query["category.cuisine"] = req.query.cuisine;
+  }
+  if (req.query.menu) {
+    query["category.menu"] = req.query.menu;
+  }
+
   // previous
   let previous: Pagination | undefined;
   if (startIndex > 0) {
@@ -34,20 +43,11 @@ const getProducts = async (req, res) => {
 
   // next
   let next: Pagination | undefined;
-  if (endIndex < (await Product.countDocuments().exec())) {
+  if (endIndex < (await Product.find(query).countDocuments().exec())) {
     next = {
       page: page + 1,
       limit: limit,
     };
-  }
-
-  // filters
-  const query = {};
-  if (req.query.cuisine) {
-    query["category.cuisine"] = req.query.cuisine;
-  }
-  if (req.query.menu) {
-    query["category.menu"] = req.query.menu;
   }
 
   try {
