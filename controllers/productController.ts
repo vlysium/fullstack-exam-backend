@@ -43,7 +43,7 @@ const getProducts = async (req, res) => {
 
   // filters
   const query = {};
-  if (req.query.category) {
+  if (req.query.cuisine) {
     query["category.cuisine"] = req.query.cuisine;
   }
   if (req.query.menu) {
