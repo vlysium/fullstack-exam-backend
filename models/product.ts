@@ -1,4 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ICuisine, cuisineSchema } from "./cuisine";
+import { IMenu, menuSchema } from "./menu";
 
 export const productSchema = new Schema({
   name: {
@@ -40,13 +42,14 @@ export const productSchema = new Schema({
       type: String,
     },
   },
-  category: {
-    type: Object,
-    cuisine: {
-      type: [String],
+  categories: {
+    cuisines: {
+      _id: false,
+      type: [cuisineSchema]
     },
-    menu: {
-      type: [String],
+    menus: {
+      _id: false,
+      type: [menuSchema]
     }
   }
 });
@@ -62,9 +65,9 @@ export interface IProduct extends Document {
     src: string;
     alt: string;
   };
-  category: {
-    cuisine: string[];
-    menu: string[];
+  categories: {
+    cuisines: [ICuisine];
+    menus: [IMenu];
   };
 }
 
