@@ -32,6 +32,8 @@ const getProducts = async (req, res) => {
     query["categories.menus.slug"] = req.query.menu;
   }
 
+  const sortBy = req.query.sortBy || null;
+
   // previous
   let previous: Pagination | undefined;
   if (startIndex > 0) {
@@ -52,7 +54,7 @@ const getProducts = async (req, res) => {
 
   try {
     const totalItems = await Product.countDocuments(query).exec(); // total number of items in the collection
-    const products: IProduct[] = await Product.find(query).limit(limit).skip(startIndex).exec(); // products for the current page
+    const products: IProduct[] = await Product.find(query).sort(sortBy).limit(limit).skip(startIndex).exec(); // products for the current page
 
     const totalPages = Math.ceil(totalItems / limit);
 
