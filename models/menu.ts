@@ -9,7 +9,13 @@ export const menuSchema = new Schema({
   slug: {
     type: String,
     default: function (this: { name: string }) {
-      return this.name.toLowerCase().split(" ").join("-");
+      return this.name
+        .toLowerCase()
+        .replace(/[^a-z\s-]/g, "") // remove special characters except hyphens
+        .replace(/\s+/g, ' ')      // replace multiple spaces with a single space
+        .trim()
+        .split(" ")
+        .join("-");
     }
   }
 });

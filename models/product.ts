@@ -12,7 +12,11 @@ export const productSchema = new Schema({
     type: String,
     unique: true,
     default: function (this: { name: string }) {
-      return this.name.toLowerCase().split(" ").join("-");
+      return this.name
+        .toLowerCase()
+        .replace(/[^a-z\s]/g, '') // Remove non-letter characters
+        .split(" ")
+        .join("-");
     }
   },
   description: {
@@ -35,7 +39,14 @@ export const productSchema = new Schema({
       type: String,
       unique: true,
       default: function (this: { name: string }) {
-        return `/images/${this.name.toLowerCase().split(" ").join("-")}.webp`;
+        const slug = this.name
+          .toLowerCase()
+          .replace(/[^a-z\s-]/g, "") // remove special characters except hyphens
+          .replace(/\s+/g, ' ')      // replace multiple spaces with a single space
+          .trim()
+          .split(" ")
+          .join("-")
+        return `/images/${slug}.webp`
       }
     },
     alt: {
