@@ -3,7 +3,7 @@ import Menu, { IMenu } from "../models/menu";
 
 const getCuisines = async (req, res) => {
   try {
-    const cuisines: ICuisine[] = await Cuisine.find().select("-_id name slug");
+    const cuisines: ICuisine[] = await Cuisine.find().select("-_id name value");
     res.status(200).json(cuisines);
   } catch (error) {
     res.status(500).json({ message: "Unexpected server error" });
@@ -12,7 +12,7 @@ const getCuisines = async (req, res) => {
 
 const getMenus = async (req, res) => {
   try {
-    const menus: IMenu[] = await Menu.find().select("-_id name slug");
+    const menus: IMenu[] = await Menu.find().select("-_id name value");
     res.status(200).json(menus);
   } catch (error) {
     res.status(500).json({ message: "Unexpected server error" });

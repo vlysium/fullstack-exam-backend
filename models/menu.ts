@@ -6,7 +6,7 @@ export const menuSchema = new Schema({
     required: [true, "Please enter a menu name"],
     trim: true,
   },
-  slug: {
+  value: {
     type: String,
     default: function (this: { name: string }) {
       return this.name
@@ -23,7 +23,7 @@ export const menuSchema = new Schema({
 export interface IMenu extends Document {
   _id: string;
   name: string;
-  slug: string;
+  value: string;
 }
 
 export default mongoose.model<IMenu>("Menu", menuSchema);

@@ -6,7 +6,7 @@ export const cuisineSchema = new Schema({
     required: [true, "Please enter a cuisine name"],
     trim: true,
   },
-  slug: {
+  value: {
     type: String,
     default: function (this: { name: string }) {
       return this.name
@@ -23,7 +23,7 @@ export const cuisineSchema = new Schema({
 export interface ICuisine extends Document {
   _id: string;
   name: string;
-  slug: string;
+  value: string;
 }
 
 export default mongoose.model<ICuisine>("Cuisine", cuisineSchema);

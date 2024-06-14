@@ -26,10 +26,10 @@ const getProducts = async (req, res) => {
   // filters
   const query = {};
   if (req.query.cuisine) {
-    query["categories.cuisines.slug"] = req.query.cuisine;
+    query["categories.cuisines.value"] = req.query.cuisine;
   }
   if (req.query.menu) {
-    query["categories.menus.slug"] = req.query.menu;
+    query["categories.menus.value"] = req.query.menu;
   }
 
   const sortBy = req.query.sortBy || null;
