@@ -2,6 +2,7 @@ import User, { IUser } from "../models/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
+import ms from "ms";
 
 // reusable function to handle errors
 function handleErrors(error, res): void {
@@ -43,11 +44,13 @@ const signup = async (req, res) => {
     newUser.password = hash;
     const user = await newUser.save();
 
+    const expiresAt = ms("1d");
+
     // create a jwt token
     const token = jwt.sign(
       { id: user._id, role: user.role},
       process.env.JWT_SECRET as string,
-      { expiresIn: 3600 }
+      { expiresIn: expiresAt }
     );
 
     // send the response to the client
@@ -95,11 +98,13 @@ const login = async (req, res) => {
       throw new Error("Invalid credentials");
     }
 
+    const expiresAt = ms("1d");
+
     // create a jwt token
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET as string,
-      { expiresIn: 3600 }
+      { expiresIn: expiresAt }
     );
 
     // send the response to the client
@@ -119,6 +124,7 @@ const login = async (req, res) => {
   }
 }
 
+// get a user's info
 const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

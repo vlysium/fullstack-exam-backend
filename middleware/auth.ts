@@ -16,7 +16,7 @@ export const jwtAuth = (req, res, next) => {
     // move to the next middleware
     next();
   } catch (error) {
-    res.status(400).json({ message: "Invalid token" });
+    res.status(403).json({ message: "Invalid token" });
   }
 }
 
@@ -30,6 +30,6 @@ export const adminAuth = (req, res, next) => {
     // move to the next middleware
     next();
   } catch (error) {
-    res.status(400).json({ message: "Invalid token" });
+    res.status(403).json({ message: "Invalid token" });
   }
 }
