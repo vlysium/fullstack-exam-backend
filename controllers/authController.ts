@@ -48,7 +48,7 @@ const signup = async (req, res) => {
 
     // create a jwt token
     const token = jwt.sign(
-      { id: user._id, role: user.role},
+      { _id: user._id, role: user.role},
       process.env.JWT_SECRET as string,
       { expiresIn: expiresAt }
     );
@@ -57,7 +57,7 @@ const signup = async (req, res) => {
     res.status(201).json({
       token,
       user: {
-        id: user._id,
+        _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
@@ -102,7 +102,7 @@ const login = async (req, res) => {
 
     // create a jwt token
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { _id: user._id, role: user.role },
       process.env.JWT_SECRET as string,
       { expiresIn: expiresAt }
     );
@@ -111,7 +111,7 @@ const login = async (req, res) => {
     res.status(200).json({
       token,
       user: {
-        id: user._id,
+        _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
@@ -127,7 +127,7 @@ const login = async (req, res) => {
 // get a user's info
 const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const user = await User.findById(req.user._id).select("-password");
     if (!user) {
       throw new Error("User not found");
     }
@@ -141,7 +141,7 @@ const getUser = async (req, res) => {
 // soft delete a user in the database
 const deleteUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, { is_deleted: !req.user.is_deleted }); // allows admins to ban/unban a user
+    const user = await User.findByIdAndUpdate(req.params._id, { is_deleted: !req.user.is_deleted }); // allows admins to ban/unban a user
     if (!user) {
       throw new Error("User not found");
     }

@@ -1,19 +1,37 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IProduct, productSchema } from "./product";
 
 export const orderSchema = new Schema({
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "User",
+    required: true,
   },
-  items: [{
-    product: productSchema,
-    quantity: {
-      type: Number,
-      required: true,
-      min: [1, "Minimum quantity is 1"],
-    }
-  }],
+  items: {
+    type: [{
+      product: {
+        _id: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        min: [1, "Minimum quantity is 1"],
+      }
+    }],
+    required: true,
+    _id: false,
+  },
   total: {
     type: Number,
     required: true,
@@ -24,15 +42,20 @@ export const orderSchema = new Schema({
   },
 });
 
-// interface to include the product quantity for each item in the order
-interface IProductQuantity extends IProduct {
+
+interface IOrderItem  {
+  product: {
+    _id: string | mongoose.Types.ObjectId;
+    name: string;
+    price: number;
+  };
   quantity: number;
 }
 
 export interface IOrder extends Document {
   _id: mongoose.Types.ObjectId | string;
   user_id: string;
-  items: IProductQuantity[];
+  items: IOrderItem[];
   total: number;
   created_at: Date;
 }
