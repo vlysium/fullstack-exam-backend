@@ -42,7 +42,7 @@ export const orderSchema = new Schema({
   },
   created_at: {
     type: Date,
-    default: Date.now,
+    default: (date: number) => new Date(date * 1000),
   },
 });
 
