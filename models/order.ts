@@ -41,8 +41,8 @@ export const orderSchema = new Schema({
     required: true,
   },
   created_at: {
-    type: Date,
-    default: (date: number) => new Date(date * 1000),
+    type: Number,
+    default: () => Math.floor(Date.now() / 1000),
   },
 });
 
@@ -62,7 +62,7 @@ export interface IOrder extends Document {
   items: IOrderItem[];
   total: number;
   items_count: number;
-  created_at: Date;
+  created_at: number;
 }
 
 export default mongoose.model<IOrder>("Order", orderSchema);

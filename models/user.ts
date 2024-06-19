@@ -33,8 +33,8 @@ export const userSchema = new Schema({
     default: false,
   },
   created_at: {
-    type: Date,
-    default: (date: number) => new Date(date * 1000),
+    type: Number,
+    default: () => Math.floor(Date.now() / 1000),
   },
 });
 
@@ -46,7 +46,7 @@ export interface IUser extends Document {
   role: "user" | "admin";
   balance: number;
   is_deleted: boolean;
-  created_at: Date;
+  created_at: Number;
 }
 
 export default mongoose.model<IUser>("User", userSchema);

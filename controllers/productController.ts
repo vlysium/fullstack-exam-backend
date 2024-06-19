@@ -53,9 +53,9 @@ const getProducts = async (req, res) => {
   }
 
   try {
-    const totalItems = await Product.countDocuments(query).exec(); // total number of items in the collection
     const products: IProduct[] = await Product.find(query).sort(sortBy).limit(limit).skip(startIndex).exec(); // products for the current page
-
+    
+    const totalItems = await Product.countDocuments(query).exec(); // total number of items in the collection
     const totalPages = Math.ceil(totalItems / limit);
 
     const response: Response = {
