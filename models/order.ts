@@ -36,6 +36,10 @@ export const orderSchema = new Schema({
     type: Number,
     required: true,
   },
+  items_count: {
+    type: Number,
+    required: true,
+  },
   created_at: {
     type: Date,
     default: Date.now,
@@ -57,6 +61,7 @@ export interface IOrder extends Document {
   user_id: string;
   items: IOrderItem[];
   total: number;
+  items_count: number;
   created_at: Date;
 }
 
