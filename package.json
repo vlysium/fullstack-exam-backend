@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "server.js",
   "scripts": {
+    "build": "npm install && tsc",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
