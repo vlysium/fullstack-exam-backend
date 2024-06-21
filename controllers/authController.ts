@@ -21,11 +21,16 @@ function handleErrors(error, res): void {
 // signup controller
 const signup = async (req, res) => {
   try {
-    const { name, email, password }: IUser = req.body;
+    const { name, email, password, confirm_password } = req.body;
 
     // validate the user input
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !confirm_password) {
       throw new Error("Please enter all fields");
+    }
+
+    // match the passwords
+    if (confirm_password !== password) {
+      throw new Error("Confirm password does not match password");
     }
 
     // validate the password
