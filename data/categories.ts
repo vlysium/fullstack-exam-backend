@@ -14,7 +14,6 @@ const categories = {
     { name: "Soups", slug: "soups" },
     { name: "Salads", slug: "salads" },
     { name: "Noodles", slug: "noodles" },
-    { name: "Pasta", slug: "pasta" },
     { name: "Bread", slug: "bread" },
     { name: "Rice", slug: "rice" },
     { name: "Meat", slug: "meat" },
