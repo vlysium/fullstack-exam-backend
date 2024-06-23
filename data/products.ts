@@ -31,7 +31,7 @@ export default [
       ],
       "menus": [
         { "name": "Meat" },
-        { "name": "Wheat" },
+        { "name": "Bread" },
         { "name": "Grilled" }
       ]
     }
